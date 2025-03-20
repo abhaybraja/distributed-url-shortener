@@ -2,22 +2,24 @@ version: '3.8'
 
 services:
   app1:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: fiber_app1
     restart: always
-    environment:
-      - PORT=3000
-      - REDIS_HOST=redis:6379
+    env_file:
+      - .env
     depends_on:
       - redis
 
   app2:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: fiber_app2
     restart: always
-    environment:
-      - PORT=3000
-      - REDIS_HOST=redis:6379
+    env_file:
+      - .env
     depends_on:
       - redis
 
@@ -27,8 +29,12 @@ services:
     restart: always
     ports:
       - "6379:6379"
+    env_file:
+      - .env
 
   nginx:
+    profiles:
+      - prod
     image: nginx:latest
     container_name: nginx_load_balancer
     restart: always
