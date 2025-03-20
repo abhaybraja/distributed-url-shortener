@@ -36,7 +36,7 @@ docker-compose up --build -d
 ```
 
 ### **5️⃣ Access Swagger API Documentation**
-- Open: [`http://localhost:3000/swagger/index.html`](http://localhost:3000/swagger/index.html)
+- Open: [`http://localhost:8080/swagger/index.html`](http://localhost:8080/swagger/index.html)
 
 ---
 
@@ -54,7 +54,7 @@ docker-compose up --build -d
 ### **1️⃣ Shorten a URL**
 **Request**
 ```sh
-curl -X POST http://localhost:3000/api/shorten \
+curl -X POST http://localhost:8080/api/shorten \
      -H "Content-Type: application/json" \
      -d '{"original_url":"https://google.com"}'
 ```
@@ -62,7 +62,7 @@ curl -X POST http://localhost:3000/api/shorten \
 **Response**
 ```json
 {
-  "short_url": "http://localhost:3000/G1xYz8",
+  "short_url": "http://localhost:8080/G1xYz8",
   "short_code": "G1xYz8"
 }
 ```
@@ -72,7 +72,7 @@ curl -X POST http://localhost:3000/api/shorten \
 ### **2️⃣ Redirect to Original URL**
 **Request**
 ```sh
-curl -v http://localhost:3000/G1xYz8
+curl -v http://localhost:8080/G1xYz8
 ```
 
 **Response**
@@ -83,7 +83,7 @@ curl -v http://localhost:3000/G1xYz8
 ### **3️⃣ Get Click Analytics**
 **Request**
 ```sh
-curl -X GET http://localhost:3000/api/analytics/G1xYz8
+curl -X GET http://localhost:8080/api/analytics/G1xYz8
 ```
 
 **Response**
@@ -113,7 +113,7 @@ docker-compose down
 ## 📜 **Swagger API Documentation**
 Swagger UI is available at:
 ```
-http://localhost:3000/swagger/index.html
+http://localhost:8080/swagger/index.html
 ```
 
 To regenerate Swagger docs:
